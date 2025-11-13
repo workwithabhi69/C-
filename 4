@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isPrime(int n) {
+    if (n < 2) return false;
+    for (int i = 2; i <= sqrt(n); i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+int countDigits(int n) {
+    int count = 0;
+    while (n > 0) {
+        count++;
+        n /= 10;
+    }
+    return count;
+}
+
+int main() {
+    int num;
+    cin >> num;
+
+    if (!isPrime(num)) {
+        cout << "Not a Circular Prime";
+        return 0;
+    }
+
+    int digits = countDigits(num);
+    int powTen = pow(10, digits - 1);
+    int rotated = num;
+
+    bool isCircularPrime = true;
+
+    for (int i = 0; i < digits - 1; i++) {
+        int lastDigit = rotated % 10;
+        rotated = (lastDigit * powTen) + (rotated / 10);
+        if (!isPrime(rotated)) {
+            isCircularPrime = false;
+            break;
+        }
+    }
+
+    if (isCircularPrime)
+        cout << "Circular Prime";
+    else
+        cout << "Not a Circular Prime";
+
+    return 0;
+}
