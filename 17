@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+bool isNeon(int num) {
+    int square = num * num;
+    int sum = 0;
+
+    while (square > 0) {
+        sum += square % 10;
+        square /= 10;
+    }
+
+    return (sum == num);
+}
+
+int main() {
+    int start, end;
+    cin >> start >> end;
+
+    cout << "Neon numbers between " << start << " and " << end << " are: ";
+
+    for (int i = start; i <= end; i++) {
+        if (isNeon(i))
+            cout << i << " ";
+    }
+
+    return 0;
+}
