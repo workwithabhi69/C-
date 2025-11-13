@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+int main() {
+    int num;
+    cin >> num;
+
+    string s = to_string(num);
+    int len = s.length();
+
+    if (len % 2 != 0) {
+        cout << "Not a Tech number";
+        return 0;
+    }
+
+    int firstHalf = stoi(s.substr(0, len / 2));
+    int secondHalf = stoi(s.substr(len / 2));
+
+    int sum = firstHalf + secondHalf;
+
+    if (sum * sum == num)
+        cout << "Tech number";
+    else
+        cout << "Not a Tech number";
+
+    return 0;
+}
