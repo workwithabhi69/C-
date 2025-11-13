@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isPrime(int n) {
+    if (n < 2)
+        return false;
+    for (int i = 2; i <= sqrt(n); i++) {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int reverseNumber(int n) {
+    int rev = 0;
+    while (n > 0) {
+        rev = rev * 10 + (n % 10);
+        n /= 10;
+    }
+    return rev;
+}
+
+int main() {
+    int num;
+    cin >> num;
+
+    int rev = reverseNumber(num);
+
+    if (isPrime(num) && isPrime(rev))
+        cout << "Twisted Prime number";
+    else
+        cout << "Not a Twisted Prime number";
+
+    return 0;
+}
