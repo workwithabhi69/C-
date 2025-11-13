@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num;
+    cin >> num;
+
+    int sum = 0, product = 1, temp = num;
+
+    while (temp > 0) {
+        int digit = temp % 10;
+        sum += digit;
+        product *= digit;
+        temp /= 10;
+    }
+
+    if (sum == product)
+        cout << "Spy number";
+    else
+        cout << "Not a Spy number";
+
+    return 0;
+}
